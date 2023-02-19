@@ -17,6 +17,7 @@ public class Outline {
     List<String> words = getList();
     System.out.println("1: ");
     // YOUR CODE
+    words.stream().forEach(n -> System.out.println("  " + n));
   }
 
   // Repeat this problem but without two spaces in front of each word.
@@ -26,6 +27,7 @@ public class Outline {
     List<String> words = getList();
     System.out.println("2: ");
     // YOUR CODE
+    words.stream().forEach(System.out::println);
   }
 
   // For each of the following lambda expressions (see Question 5 in Worksheet 2),
@@ -40,6 +42,13 @@ public class Outline {
     List<String> words = getList();
     System.out.println("3:");
     // YOUR CODE
+    List<String> threeCharsMax = words.stream().filter(s -> s.length() < 4).toList();
+    List<String> containsB = words.stream().filter(s -> s.contains("b")).toList();
+    List<String> evenLength = words.stream().filter(s -> (s.length() % 2) ==0).toList();
+
+    System.out.println(threeCharsMax);
+    System.out.println(containsB);
+    System.out.println(evenLength);
   }
 
 
@@ -55,6 +64,13 @@ public class Outline {
     List<String> words = getList();
     System.out.println("4:");
     // YOUR CODE
+    List<String> exclamations = words.stream().map(s -> s + "!").toList();
+    List<String> iToEye = words.stream().map(s -> s.replace("i", "eye")).toList();
+    List<String> upperCase = words.stream().map(s -> s.toUpperCase()).toList();
+
+    System.out.println(exclamations);
+    System.out.println(iToEye);
+    System.out.println(upperCase);
   }
 
 
@@ -67,6 +83,9 @@ public class Outline {
     List<String> words = getList();
     System.out.println("5a:");
     // YOUR CODE
+    words.stream().map(s -> s.toUpperCase()).filter(s -> s.length() < 4).filter(s -> s.contains("E")).forEach(System.out::println);
+    System.out.println("5b:");
+    words.stream().map(s -> s.toUpperCase()).filter(s -> s.length() < 4).filter(s -> s.contains("Q")).forEach(System.out::println);
   }
 
 
@@ -79,6 +98,9 @@ public class Outline {
     List<String> words = getList();
     System.out.println("6:");
     // YOUR CODE
+    System.out.println(words);
+    words.stream().peek(s -> System.out.println("Initial: " + s)).map(s -> s.toUpperCase()).peek(s -> System.out.println("ToUpperCase: " + s)).filter(s -> s.length() < 4).peek(s -> System.out.println("Less than 4 chars: " + s)).filter(s -> s.contains("E")).peek(s -> System.out.println("Contains E: " + s));
+    words.stream().peek(s -> System.out.println("Initial: " + s)).map(s -> s.toUpperCase()).peek(s -> System.out.println("ToUpperCase: " + s)).filter(s -> s.length() < 4).peek(s -> System.out.println("Less than 4 chars: " + s)).filter(s -> s.contains("Q")).peek(s -> System.out.println("Contains Q: " + s));
   }
 
   // (*) Produce a single String that is the result of concatenating the
@@ -120,6 +142,13 @@ public class Outline {
 
   public static void main(String... args) { // varargs alternative to String[]
     question1();
+    question2();
+    question3();
+    question4();
+    question5();
+    question6();
+    question7();
+
 
   }
 }
