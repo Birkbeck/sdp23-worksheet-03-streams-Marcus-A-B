@@ -1,3 +1,4 @@
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -99,8 +100,8 @@ public class Outline {
     System.out.println("6:");
     // YOUR CODE
     System.out.println(words);
-    words.stream().peek(s -> System.out.println("Initial: " + s)).map(s -> s.toUpperCase()).peek(s -> System.out.println("ToUpperCase: " + s)).filter(s -> s.length() < 4).peek(s -> System.out.println("Less than 4 chars: " + s)).filter(s -> s.contains("E")).peek(s -> System.out.println("Contains E: " + s));
-    words.stream().peek(s -> System.out.println("Initial: " + s)).map(s -> s.toUpperCase()).peek(s -> System.out.println("ToUpperCase: " + s)).filter(s -> s.length() < 4).peek(s -> System.out.println("Less than 4 chars: " + s)).filter(s -> s.contains("Q")).peek(s -> System.out.println("Contains Q: " + s));
+    words.stream().peek(s -> System.out.println("Initial: " + s)).map(s -> s.toUpperCase()).peek(s -> System.out.println("ToUpperCase: " + s)).filter(s -> s.length() < 4).peek(s -> System.out.println("Less than 4 chars: " + s)).filter(s -> s.contains("E")).peek(s -> System.out.println("Contains E: " + s)).toList();
+    words.stream().peek(s -> System.out.println("Initial: " + s)).map(s -> s.toUpperCase()).peek(s -> System.out.println("ToUpperCase: " + s)).filter(s -> s.length() < 4).peek(s -> System.out.println("Less than 4 chars: " + s)).filter(s -> s.contains("Q")).peek(s -> System.out.println("Contains Q: " + s)).toList();
   }
 
   // (*) Produce a single String that is the result of concatenating the
@@ -113,6 +114,7 @@ public class Outline {
     List<String> words = getList();
     System.out.println("7:");
     // YOUR CODE
+    System.out.println(words.stream().map(s -> s.toUpperCase()).reduce( (a,b) -> a.concat(b) ));
   }
 
 
@@ -125,6 +127,7 @@ public class Outline {
     List<String> words = getList();
     System.out.println("8:");
     // YOUR CODE
+    System.out.println(words.stream().reduce( (a,b) -> a.toUpperCase().concat(b.toUpperCase()) ));
   }
 
   // (*) Produce a String that is all the words concatenated together, but
@@ -136,8 +139,8 @@ public class Outline {
     List<String> words = getList();
     System.out.println("9:");
     // YOUR CODE
+    System.out.println(words.stream().reduce((a, b) -> a.concat(",").concat(b)));
   }
-
   // CONTINUE WITH THE REST OF THE QUESTIONS
 
   public static void main(String... args) { // varargs alternative to String[]
@@ -148,7 +151,7 @@ public class Outline {
     question5();
     question6();
     question7();
-
-
+    question8();
+    question9();
   }
 }
